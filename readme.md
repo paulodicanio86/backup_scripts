@@ -5,9 +5,9 @@ Run the script with:
 python backup_to_USB_discs_and_DiskStation.py
 ```
 
-The backup will be placed in a folder called *BACKUP*. In addition, a folder called *MANUAL* exists on all backup media (NAS and 3x USB discs). This folder will be backup in following sequence NAS>USB1>USB2>USB3.
+The backup will be placed in a folder called *BACKUP*. In addition, a folder called *MANUAL* exists on all backup media (NAS and 3x USB discs). This folder will backup in following sequence NAS>USB1>USB2>USB3.
 
-For the special case where modifications to the *MANUAL* folder on USB1 have been made, use following script to sync the manual folder from USB->NAS:
+For the special case where modifications to the *MANUAL* folder on USB1 have been made, use following script to sync the manual folder from USB1>NAS:
 ```
 python backup_MANUAL_from_USB_DRIVE1_to_DiskStation.py
 ```
