@@ -12,7 +12,7 @@ For the special case where modifications to the *MANUAL* folder on USB1 have bee
 python backup_MANUAL_from_USB_DRIVE1_to_DiskStation.py
 ```
 
-##Passwordless rsync
+## Passwordless rsync
 
 On the NAS the rsync service needs to be activated:
 Control panel > File Services > rsync > Enable rsync service (do not check Enable rsync account).
@@ -24,9 +24,9 @@ For the designated user rysnc then also needs to be allowed (under User > Edit >
 https://silica.io/using-ssh-key-authentification-on-a-synology-nas-for-remote-rsync-backups/
 ....
 
-To make the 
-
-
+To make sync passwordless for user XYZ, follow these steps:
+- Mak XYZ part of the local administrator group.
+- do this
 
 
 Login into synology over ssh (enable it first) with a local administrator account.
