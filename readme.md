@@ -16,31 +16,43 @@ python backup_MANUAL_from_USB_DRIVE1_to_DiskStation.py
 
 On the NAS the rsync service needs to be activated:
 Control panel > File Services > rsync > Enable rsync service (do not check Enable rsync account).
-
 For the designated user rysnc then also needs to be allowed (under User > Edit > Applications). 
 
+Remember:
+- By default, root is not allowed to connect, you need to connect with another user and use ```sudo -i``` (then type the password of the user you are connected with)
+- Only members of the administrators group are allowed to connect by SSH. However, even non-administrators can use the rsync service.
 
-....
-https://silica.io/using-ssh-key-authentification-on-a-synology-nas-for-remote-rsync-backups/
-....
-
-To make sync passwordless for user XYZ, follow these steps:
-- Mak XYZ part of the local administrator group.
-- do this
-
-
-Login into synology over ssh (enable it first) with a local administrator account.
-change to root user with
+### Enabling Public key authentification
+This is disabled by default.
+Add the designated user temporarily to the administrators group (Control panel > User > foaly > Edit > User groups)
+SSH into the NAS:
+```
+ssh [user]@[nas-ip]
+```
+Change to root:
 ```
 sudo -i
 ```
-mkdir /root/.ssh
-cd /root/.ssh
-ssh-keygen
+Edit the SSH service config:
+```
+vim /etc/ssh/sshd_config
+```
+(in vim, press 'i' for insert mode, 'ctrl + c' to quit insert mode, 'and ':' for command mode. ':wq' will write current changes and quit vim)
+Uncomment the lines *PubkeyAuthentication yes* and *AuthorizedKeysFile .ssh/authorized_keys* (make sure not to change anything else, otherwise you could lock yourself out of SSH).
 
-(press enter for all questions)
+Restart the SSH service by disabling and re-enabling the SSH service in Control panel > Terminal & SNMP.
 
-At the end there is a private and public key file in /root/.ssh
-the default key file names are id-rsa and id-rsa.pub
-
+Logout of the NAS.
+Check that the current laptop/pc (to connect to the NAS with) has a pair of ssh keys (in */.ssh*). If not, generate these with *ssh-keygen -t rsa*.
+If a key pair exists copy the relevant bits to the NAS with:
+```
+ssh-copy-id [user]@[nas-ip]
+```
+Now connect to the NAS again with ssh and that user, and change following file permissions:
+```
+chmod 0711 ~
+chmod 0711 ~/.ssh
+chmod 0600 ~/.ssh/authorized_keys
+```
+Exit. Now passwordless ssh should work. Remove the user from the administrator group. Now passworldless rsync should remain working! 
 
