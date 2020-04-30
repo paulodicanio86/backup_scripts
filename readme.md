@@ -38,6 +38,7 @@ Edit the SSH service config:
 vim /etc/ssh/sshd_config
 ```
 (in vim, press 'i' for insert mode, 'ctrl + c' to quit insert mode, and ':' for command mode. ':wq' will write current changes and quit vim)
+
 Uncomment the lines ```PubkeyAuthentication yes``` and ```AuthorizedKeysFile .ssh/authorized_keys``` (make sure not to change anything else, otherwise you could lock yourself out of SSH).
 
 Restart the SSH service by disabling and re-enabling the SSH service in Control panel > Terminal & SNMP.
