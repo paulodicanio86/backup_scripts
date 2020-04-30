@@ -37,13 +37,13 @@ Edit the SSH service config:
 ```
 vim /etc/ssh/sshd_config
 ```
-(in vim, press 'i' for insert mode, 'ctrl + c' to quit insert mode, 'and ':' for command mode. ':wq' will write current changes and quit vim)
-Uncomment the lines *PubkeyAuthentication yes* and *AuthorizedKeysFile .ssh/authorized_keys* (make sure not to change anything else, otherwise you could lock yourself out of SSH).
+(in vim, press 'i' for insert mode, 'ctrl + c' to quit insert mode, and ':' for command mode. ':wq' will write current changes and quit vim)
+Uncomment the lines ```PubkeyAuthentication yes``` and ```AuthorizedKeysFile .ssh/authorized_keys``` (make sure not to change anything else, otherwise you could lock yourself out of SSH).
 
 Restart the SSH service by disabling and re-enabling the SSH service in Control panel > Terminal & SNMP.
 
 Logout of the NAS.
-Check that the current laptop/pc (to connect to the NAS with) has a pair of ssh keys (in */.ssh*). If not, generate these with *ssh-keygen -t rsa*.
+Check that the current laptop/pc (to connect to the NAS with) has a pair of ssh keys (in */.ssh*). If not, generate these with ```ssh-keygen -t rsa```.
 If a key pair exists copy the relevant bits to the NAS with:
 ```
 ssh-copy-id [user]@[nas-ip]
