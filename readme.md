@@ -57,3 +57,4 @@ chmod 0600 ~/.ssh/authorized_keys
 ```
 Exit. Now passwordless ssh should work. Remove the user from the administrator group. Now passworldless rsync should remain working! 
 
+Based on this tutorial: https://silica.io/using-ssh-key-authentification-on-a-synology-nas-for-remote-rsync-backups/
