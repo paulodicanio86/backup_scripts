@@ -45,18 +45,18 @@ Uncomment the lines ```PubkeyAuthentication yes``` and ```AuthorizedKeysFile .ss
 Restart the SSH service by disabling and re-enabling the SSH service in Control panel > Terminal & SNMP.
 
 Logout of the NAS.
-Check that the current laptop/pc (to connect to the NAS with) has a pair of ssh keys (in */.ssh*). If not, generate these with ```ssh-keygen -t rsa```.
+Check that the current laptop/pc (to connect to the NAS with) has a pair of SSH keys (in */.ssh*). If not, generate these with ```ssh-keygen -t rsa```.
 If a key pair exists copy the relevant bits to the NAS with:
 ```
 ssh-copy-id [user]@[nas-ip]
 ```
-Now connect to the NAS again with ssh and that user, and change following file permissions:
+Now connect to the NAS again with SSH and that user (```ssh [user]@[nas-ip]```), and change following file permissions:
 ```
 chmod 0711 ~
 chmod 0711 ~/.ssh
 chmod 0600 ~/.ssh/authorized_keys
 ```
-Exit. Now passwordless ssh should work. Remove the user from the administrator group. Now passwordless rsync should remain working! 
+Exit. Now passwordless SSH should work. Remove the user from the administrator group. Now passwordless rsync should remain working! 
 
 
 Based on this [tutorial](https://silica.io/using-ssh-key-authentification-on-a-synology-nas-for-remote-rsync-backups/).
