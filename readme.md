@@ -24,7 +24,7 @@ Remember:
 
 ### Enabling Public key authentification
 This is disabled by default.
-Add the designated user temporarily to the administrators group (Control panel > User > foaly > Edit > User groups)
+Add the designated user temporarily to the administrators group (Control panel > User > [user] > Edit > User groups)
 SSH into the NAS:
 ```
 ssh [user]@[nas-ip]
